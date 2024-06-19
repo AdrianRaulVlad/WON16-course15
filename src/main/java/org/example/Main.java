@@ -5,17 +5,7 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        List<Person> persons = Arrays.asList(
-                new Person("Alice", "Smith", 25, "Oradea"),
-                new Person("Bob", "Brown", 17, "Cluj"),
-                new Person("Charlie", "Davis", 30, "Oradea"),
-                new Person("David", "Miller", 45, "Cluj"),
-                new Person("Eve", "Wilson", 70, "Oradea"),
-                new Person("Frank", "Taylor", 50, "Bucharest"),
-                new Person("Ana", "Johnson", 28, "Timisoara")
-        );
-
-        PersonService personService = new PersonService(persons);
+        PersonService personService = getPersonService();
 
         System.out.println("All persons names: ");
         personService.getAllPersonNames().forEach(System.out::println);
@@ -52,5 +42,21 @@ public class Main {
 
         System.out.println("\nPersons sorted by first name, last name, and age: ");
         personService.getPersonsSortedByFirstNameLastNameAndAge().forEach(System.out::println);
+    }
+
+    private static PersonService getPersonService() {
+        List<Person> persons = Arrays.asList(
+                new Person("Alice", "Smith", 25, "Oradea"),
+                new Person("Bob", "Brown", 17, "Cluj"),
+                new Person("Charlie", "Davis", 30, "Oradea"),
+                new Person("David", "Miller", 45, "Cluj"),
+                new Person("Eve", "Wilson", 70, "Oradea"),
+                new Person("Frank", "Taylor", 50, "Bucharest"),
+                new Person("Ana", "Johnson", 28, "Timisoara")
+        );
+
+        PersonService personService;
+        personService = new PersonService(persons);
+        return personService;
     }
 }
